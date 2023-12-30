@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@200;300;400;500&family=Montserrat:wght@100;200;300&family=Poppins:wght@100;300;400;700&display=swap');
+
 :root{
   // COLORS
   --white: hsla(0, 0%, 100%, 1);
@@ -14,10 +16,12 @@
 --raisin-black_a6: hsla(216, 14%, 14%, 0.06);
 --gunmetal: hsla(214, 15%, 21%, 1);
 --charcoal: hsla(219, 22%, 26%, 1);
+--resume-blue:#00abf0;
 
 
 // FONT-FAMILY
 --ff-kalina:  'Kalnia', serif;
+--ff-mont:  'Montserrat', sans-serif;
 
 // SPACING
 --fs-1: calc(2.7rem + 1.38vw);
@@ -578,9 +582,9 @@ textarea.input-field{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--charcoal);
+  background-color: var(--cultured);
   color: #333;
-  font-family: var(--ff-kalina) ;
+  font-family: var(--ff-mont) ;
 }
 
 .resWrapper{
@@ -596,7 +600,7 @@ textarea.input-field{
   left:0;
   width: 50%;
   height: 100%;
-  background: linear-gradient(45deg, #00abf0, #006e9a);
+  background: linear-gradient(45deg, var(--charcoal), #00abf0);
   box-shadow: 0 0 0.6rem rgba(0, 0, 0, .2);
   border-top-left-radius: 0.6rem;
   border-bottom-left-radius: 0.6rem;
@@ -633,23 +637,24 @@ textarea.input-field{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: var(--ff-kalina) ;
+  font-family: var(--ff-mont) ;
   
 
   img{
-    max-width: 180px;
+    max-width: 200px;
     border-radius: 50%;
-    border: .25rem solid #00abf0;
+    border: .25rem solid var(--resume-blue);
     margin-bottom: 0.8rem;
   }
 
   h1{
     font-size: 2.7rem;
     line-height: 1;
+    font-family: var(--ff-kalina);
   }
   h3{
     font-size: 20px;
-    color: #00abf0;
+    color: var(--resume-blue);
     font-weight: var(--fw-700) !important;
   }
 
@@ -683,20 +688,23 @@ textarea.input-field{
   align-items: center;
   width: 10.5rem;
   height: 3rem;
-  background: #00abf0;
-  border: .125rem solid #00abf0;
+  background: var(--resume-blue);
+  border: .125rem solid var(--cultured);
 border-radius: .3rem;
-font-size: 14px;
+font-size:1.2rem;
 color: var(--cultured);
 font-weight: 500;
+transition: 0.5s;
 
 &:nth-child(2){
   background-color: transparent;
   color: var(--black-coral);
+  border-color: var(--charcoal);
 
   &:hover{
-    background-color: #00abf0;
+    background-color: var(--resume-blue);
     color: var(--cultured);
+    border-color: var(--cultured);
   }
 }
 }
@@ -704,12 +712,13 @@ font-weight: 500;
   position: absolute;
   right:0;
   transform-style: preserve-3d;
+  transform-origin: left;
+
+  &.turn{
+    transform: rotateY(-180deg);
+  }
 }
-.year{
-  display: inline-flex;
-  gap: 5px;
-  line-height: 1;
-}
+
 .book-page .page-front,
 .book-page .page-back{
   position: absolute;
@@ -727,6 +736,113 @@ font-weight: 500;
 .book-page .page-back{
   transform: rotateY(180deg) translateZ(1px);
 }
+
+.title{
+  text-align:center;
+  margin-bottom: 1rem;
+  
+}
+.workeduc-box{
+  border-left: .125rem solid var(--resume-blue);
+
+
+  .workeduc-content{
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 1.5rem;
+
+    &::before{
+      content:'';
+      position: absolute;
+      top:0;
+      left:-0.65rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      background: var(--charcoal);
+      border-radius: 50%;
+    }
+  }
+}
+.workeduc-content{
+  font-size: 1.35rem;
+  
+
+
+  .year{
+    display: flex;
+    gap: 5px;
+    line-height: 1;
+    color: var(--resume-blue);
+
+    i{
+      margin-right:0.4rem;
+    }
+  }
+}
+
+.number-page{
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nextprev-btn{
+  position: absolute;
+  bottom: 0.9rem;
+  right: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  font-size: 2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+
+
+  &:hover{
+    color:#00abf0;
+    margin-bottom: .4rem;
+  }
+
+  &.back{
+    left:1.5rem;
+  }
+}
+
+.services-box{
+  display:flex;
+  flex-wrap: wrap;
+  gap:2rem;
+
+
+
+  .services-content{
+    flex: 1 1 10rem;
+    border: 0.125rem solid #00abf0;
+    border-radius: .5rem;
+    padding: .8rem .5rem 1.1rem;
+    text-align: center;
+    font-size: 1.2rem;
+
+
+ion-icon{
+  text-align: center;
+  margin:auto;
+  font-size: 2.5rem;
+  color:#00abf0;
+}
+
+   h3{
+    font-size: 1.2rem;
+    font-weight: var(--fw-700);
+   }
+  }
+}
+
+
+
 //RESPONSIVE 
 
 
