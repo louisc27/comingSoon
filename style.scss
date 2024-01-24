@@ -581,19 +581,45 @@ textarea.input-field{
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: var(--cultured);
   color: #333;
   font-family: var(--ff-mont) ;
+  overflow: hidden;
+
+  header.active{
+    height: 3rem;  
+  }
+}
+
+header .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
 }
 
 .resWrapper{
   position: relative;
+  
   width: 88rem;
   height: 66rem;
   padding: 2rem;
-  
+  perspective: 250rem;
+  animation: show-animate 2s forwards;
 }
+
+@keyframes show-animate {
+  0%, 30% {
+    opacity: 0;
+    transform: rotate(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
 .cover{
   position: absolute;
   top:0;
@@ -608,6 +634,11 @@ textarea.input-field{
 
   &.cover-left{
     z-index: -1;
+  }
+
+  &.cover-right{
+    z-index: 100;
+    transition: transform 1s cubic-bezier(.645, .045, .0355, 1);
   }
 
   &.cover-right.turn{
@@ -631,7 +662,13 @@ textarea.input-field{
     box-shadow: 0 0 0.6rem rgba(0, 0, 0, .1);
     display: flex;
     padding: 2rem;
+
+    
   }
+}
+.book-page.page-left{
+  box-shadow: -.6rem .6rem .6rem rgba(0, 0, 0, .1);
+  
 }
 .profile-page{
   display: flex;
@@ -639,6 +676,7 @@ textarea.input-field{
   align-items: center;
   flex-direction: column;
   font-family: var(--ff-mont) ;
+  
   
 
   img{
@@ -1067,6 +1105,133 @@ text-align: center;
   }
 
    //RESPONSIVE 
+   @media only screen and (min-width: 425px){
+    .resBody {
+      position: absolute;
+      top: -40px;
+      min-height: 100vh;
+      background-color: #40739e;
+      color: #333;
+      font-family: var(--ff-mont);
+      overflow: hidden;
+      
+      
+  }
+  .resWrapper{
+    position: relative;
+    width: 100vw;
+    max-height: 100vh;
+    margin-top: 2.5rem;
+    padding: 2rem;
+    perspective: 250rem;
+    animation: show-animate 2s forwards;
+    
+  }
+  .profile-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--ff-mont) ;
+    max-width: 100%;
+
+    img{
+      width: 150px;
+      height: 200px;
+      border-radius: 50%;
+      border: .25rem solid var(--resume-blue);
+      margin-bottom: 0.8rem;
+      position: relative;
+     
+    }
+    h1{
+      font-size: 15px;
+      line-height: 1;
+      font-family: var(--ff-kalina);
+      
+    }
+    h3{
+      font-size: 15px;
+    }
+    p{
+      font-size: 13px;
+      max-width: 100%;
+    }
+    .btn-box {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 1.2rem;
+  }
+  }
+    .book-page.page-right{
+      max-width: 100%;
+      max-height: 100%;;
+    } 
+    .book-page .page-front, .book-page .page-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #fff, #ddd);
+      padding: 1.5rem 2rem;
+      overflow-x: auto;
+  }
+  .title{
+    font-size: 17px;
+  }
+  .workeduc-box .workeduc-content {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+   
+}
+
+.portfolio-box .img-box {
+  display: flex;
+  width: 100%;
+   height: 7rem; 
+  border: 0.225rem solid #00abf0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 7rem;
+    transition: .5s ease;
+  }
+}
+.services-box .services-content {
+  height: 11rem;
+  border: 0.125rem solid #00abf0;
+  border-radius: 0.5rem;
+  padding: 0.8rem 0.5rem 1.1rem;
+  text-align: center;
+  font-size: 1rem;
+  transition: .3s ease;
+
+   ion-icon {
+    text-align: center;
+    margin: auto;
+    font-size: 1.2rem;
+    color: #00abf0;
+}
+.button{
+  display: none;
+}
+}
+.portfolio-box .btn-box .button {
+  margin: 2rem;
+  min-width: 60px;
+  padding: 1rem 1rem;
+  height: 50px;
+}
+
+   }
 
 
 // Larger than 575px screen
@@ -1088,6 +1253,8 @@ text-align: center;
   .contact-card{
     padding: 68px;
   }
+
+  
 
 }
 
@@ -1224,7 +1391,7 @@ text-align: center;
   }
 
   .header {
-    top: 45px;
+    top: 20px;
     max-width: 960px;
     left: 50%;
     transform: translateX(-50%);
@@ -1311,6 +1478,128 @@ text-align: center;
     gap: 90px;
   }
 
+  .resBody {
+    position: absolute;
+    
+    min-height: 100vh;
+    background-color: var(--cultured);
+    color: #333;
+    font-family: var(--ff-mont);
+    overflow: hidden;
+    
+}
+.resWrapper{
+  position: relative;
+  width: 88rem;
+  max-height: 66rem;
+  padding: 2rem;
+  perspective: 250rem;
+  animation: show-animate 2s forwards;
+}
+.profile-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--ff-mont) ;
+  max-width: 100%;
+
+  img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: .25rem solid var(--resume-blue);
+    margin-bottom: 0.8rem;
+    position: relative;
+   
+  }
+  h1{
+    font-size: 15px;
+    line-height: 1;
+    font-family: var(--ff-kalina);
+    
+  }
+  h3{
+    font-size: 15px;
+  }
+  p{
+    font-size: 13px;
+    max-width: 100%;
+  }
+  .btn-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 1.2rem;
+}
+}
+  .book-page.page-right{
+    max-width: 100%;
+    max-height: 100%;;
+  } 
+  .book-page .page-front, .book-page .page-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #fff, #ddd);
+    padding: 1.5rem 2rem;
+    overflow-x: auto;
+}
+.title{
+  font-size: 17px;
+}
+.workeduc-box .workeduc-content {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+ 
+}
+
+.portfolio-box .img-box {
+display: flex;
+width: 100%;
+ height: 7rem; 
+border: 0.225rem solid #00abf0;
+border-radius: 0.5rem;
+overflow: hidden;
+
+
+img {
+  width: 100%;
+  object-fit: cover;
+  height: 7rem;
+  transition: .5s ease;
+}
+}
+.services-box .services-content {
+height: 11rem;
+border: 0.125rem solid #00abf0;
+border-radius: 0.5rem;
+padding: 0.8rem 0.5rem 1.1rem;
+text-align: center;
+font-size: 1rem;
+transition: .3s ease;
+
+ ion-icon {
+  text-align: center;
+  margin: auto;
+  font-size: 1.2rem;
+  color: #00abf0;
+}
+.button{
+display: none;
+}
+}
+.portfolio-box .btn-box .button {
+margin: 2rem;
+min-width: 60px;
+padding: 1rem 1rem;
+height: 50px;
+}
+
 }
 
 
@@ -1347,6 +1636,142 @@ text-align: center;
    */
 
   .contact-card { gap: 150px; }
+
+  .resBody {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+    background-color: var(--cultured);
+    color: #333;
+    margin-top: 5rem;
+    font-family: var(--ff-mont);
+    overflow: hidden;
+    background-color: #40739e;
+}
+.resWrapper{
+  position: relative;
+  width: 88rem;
+  height: 66rem;
+  padding: 2rem;
+  perspective: 250rem;
+  animation: show-animate 2s forwards;
+}
+.profile-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--ff-mont) ;
+  
+
+  img{
+    max-width: 200px;
+    
+    border-radius: 50%;
+    border: .25rem solid var(--resume-blue);
+    margin-bottom: 0.8rem;
+    position: relative;
+   
+  }
+  h1{
+    font-size: 2.7rem;
+    line-height: 1;
+    font-family: var(--ff-kalina);
+    
+  }
+  h3{
+    font-size: 20px;
+  }
+  p{
+    font-size: 17px;
+    max-width: 100%;
+    text-align: justify;
+  }
+  .btn-box {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 1.2rem;
+}
+}
+  .book-page.page-right{
+    max-width: 100%;
+    max-height: 100%;;
+  } 
+  .book-page .page-front, .book-page .page-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #fff, #ddd);
+    padding: 1.5rem 2rem;
+    overflow-x: auto;
+}
+.title{
+  font-size: 2.7rem;
+}
+.workeduc-box{
+margin-top:2.5rem; 
+}
+
+.workeduc-box .workeduc-content {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 5rem;
+  font-size: 1.35rem;
+ 
+}
+
+.portfolio-box .img-box {
+display: flex;
+width: 100%;
+ height: 15rem; 
+border: 0.225rem solid #00abf0;
+border-radius: 0.5rem;
+overflow: hidden;
+
+
+img {
+  width: 100%;
+  object-fit: cover;
+ height:15rem;
+  transition: .5s ease;
+}
+}
+.services-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  min-height: 80%;
+}
+.services-box .services-content {
+flex: 1 1 10rem;
+border: 0.125rem solid #00abf0;
+border-radius: 0.5rem;
+padding: 0.8rem 0.5rem 1.1rem;
+text-align: center;
+font-size: 1.45rem;
+transition: .3s ease;
+height: 100% !important;
+
+ ion-icon {
+  text-align: center;
+  margin: auto;
+  font-size: 3.5rem;
+  color: #00abf0;
+}
+.button{
+display: none;
+}
+}
+.portfolio-box .btn-box .button {
+margin: 2rem;
+min-width: 60px;
+padding: 1rem 1rem;
+height: 50px;
+}
 
 }
 
