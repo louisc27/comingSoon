@@ -660,33 +660,39 @@
                 </p>
               </div>
 
-              <form action="" class="contact-form" data-reveal="right">
+              <form action="https://formsubmit.co/rclouis24@gmail.com" method="POST" class="contact-form" id="contact-form" data-reveal="right">
                 <div class="input-wrapper">
+                  
                   <input
+                  id="name"
                     type="text"
                     name="name"
                     placeholder="Name *"
                     required
+                    value=""
                     class="input-field"
                   />
 
                   <input
+                  id="email"
                     type="email"
                     name="email_address"
                     placeholder="Email *"
                     required
+                    value=""
                     class="input-field"
                   />
                 </div>
 
                 <textarea
+                id="message"
                   name="message"
                   placeholder="Message *"
                   required
                   class="input-field"
                 ></textarea>
 
-                <button type="submit" class="btn btn-secondary">
+                <button id="submit_button" type="submit" class="btn btn-secondary">
                   Send message
                 </button>
               </form>
